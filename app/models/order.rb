@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   validates :shipping_address, presence: true
 
 
-
+  has_many :product_lists
 
 
 
