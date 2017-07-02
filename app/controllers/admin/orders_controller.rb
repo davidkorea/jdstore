@@ -20,6 +20,8 @@ class Admin::OrdersController < ApplicationController
   def ship
     @order = Order.find(params[:id])
     @order.ship!
+    OrderMailer.notify_ship(@order).deliver!
+
     redirect_to :back
   end
 
@@ -38,6 +40,8 @@ class Admin::OrdersController < ApplicationController
   def return
     @order = Order.find(params[:id])
     @order.return_good!
+    OrderMailer.notify_ship(@order).deliver!
+
     redirect_to :back
   end
 
